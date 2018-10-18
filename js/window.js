@@ -1,4 +1,4 @@
-define(['jquery'], function ($) {
+define(['jquery','jqueryUI'], function ($,$UI) {
     function Window() {
         this.cfg = {
             width: 500,
@@ -11,11 +11,13 @@ define(['jquery'], function ($) {
             test4AlertBtn: "确定",
             handler4AlertBtn: null,
             handlerCloseBtn: null,
+            isDraggable:true,
         }
     }
 
     Window.prototype = {
         alert: function (cfg) {
+            console.log($,$UI)
             var config = $.extend(this.cfg, cfg);
 
             var boundingBox = $('<div class="window_boundingBox">' +
@@ -59,6 +61,14 @@ define(['jquery'], function ($) {
             if (config.skinClassName) {
                 boundingBox.addClass(config.skinClassName);
             }
+            /*
+            if(config.isDraggable){
+				if (config.dragHandle) {
+					boudingBox.draggable({handle:config.dragHandle});
+				}else{
+					boudingBox.draggable();
+				}
+            }*/
 
 
         },

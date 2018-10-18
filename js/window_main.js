@@ -1,7 +1,8 @@
 require.config({
-    paths: {
-        jquery: 'jquery-3.1.0'
-    }
+	paths:{
+		jquery:'jquery-3.1.0',
+		jqueryUI:'jquery-ui.min'
+	}
 });
 require(['jquery', 'window'], function ($, w) {
     $('#click').click(function () {

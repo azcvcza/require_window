@@ -7,6 +7,8 @@
     margin-left:-250px;
     top:100px;
     box-shadow:0 0 12px rgba(0,0,0,.5);
+    z-index:2;
+    background: #fff;
 }
 .window_boundingBox input{
         position: absolute;
@@ -15,6 +17,7 @@
         padding:0px;
         margin-left:-50px;/*等于宽度一半，反向拉回,实现居中*/
         width:100px;
+        
 }
 .window_header{
     background:#58a;
@@ -38,4 +41,16 @@
 	background: red;
 	cursor: pointer;
 	padding: 5px;
+}
+
+.window_mask{
+    width:100%;
+    height:100%;
+    background: #000;
+    opacity: .1;
+    position: fixed;
+    left:0;
+    top:0;
+    transition:.1s;
+    z-index:1;
 }
