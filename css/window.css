@@ -27,3 +27,15 @@
 .window_body{
     padding:10px;
 }
+.window_closeBtn{
+	position: absolute;
+	right: 0;
+    top: 0;
+    width:25px;
+    height:20px;
+	font-size: 10px;
+	color: #fff;
+	background: red;
+	cursor: pointer;
+	padding: 5px;
+}
