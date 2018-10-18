@@ -12,14 +12,31 @@ define(['jquery','jqueryUI'], function ($,$UI) {
             handler4AlertBtn: null,
             handlerCloseBtn: null,
             isDraggable:true,
-        }
+        };
+        this.handler={};
     }
 
     Window.prototype = {
+        on : function(type,handler){
+           
+			if (typeof this.handlers[type]=='undefined') {
+				this.handlers[type]=[];
+			}
+			this.handlers[type].push(handler);
+		},
+		fire : function(type,data){
+            
+			if (this.handlers[type] instanceof Array) {
+				var handlers = this.handlers[type];
+				for(var i=0,len=handlers.length;i<len;i++){
+					handlers[i](data);
+				}
+			};
+		},
         alert: function (cfg) {
-            console.log($,$UI)
+            
             var config = $.extend(this.cfg, cfg);
-
+            var that = this;//取消window绑定
             var boundingBox = $('<div class="window_boundingBox">' +
                 '<div class="window_header">' + config.title + '</div>' +
                 '<div class="window_body">' + config.content + '</div>' +
@@ -34,6 +51,7 @@ define(['jquery','jqueryUI'], function ($,$UI) {
                 config.handler && config.handler();
                 boundingBox.remove();
                 mask & mask.remove();
+                
             })
 
             boundingBox.appendTo('body');
@@ -56,6 +74,7 @@ define(['jquery','jqueryUI'], function ($,$UI) {
                     config.handler4CloseBtn && config.handler4CloseBtn(); //弹出窗口的关闭按钮处理函数
                     $('.window_boundingBox').remove();
                     mask && mask.remove();
+                    
                 })
             }
             if (config.skinClassName) {
@@ -69,6 +88,7 @@ define(['jquery','jqueryUI'], function ($,$UI) {
 					boudingBox.draggable();
 				}
             }*/
+          
 
 
         },
